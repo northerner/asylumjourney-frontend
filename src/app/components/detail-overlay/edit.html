@@ -1,0 +1,25 @@
+<article class="details">
+  <form class="form">
+    <label>Name: <input type="text" ng-model="service.name" /></label><br />
+    <label>Hidden: <input type="checkbox" ng-model="service.hidden" /></label><br />
+    <textarea ng-model="service.description"></textarea><br />
+    <label>Data maintainer: <input type="text" ng-model="service.dataMaintainer" /></label><br />
+    <label>End date: <input type="date" ng-model="service.endDate" /></label><br />
+
+    <label for="providers">Providers: </label><br>
+    <select style="width: 200px;" name="providers" id="providers" ng-model="service._embedded.providers" multiple>
+      <option ng-repeat="provider in providers" value="{{provider.id}}">{{provider.name}}</option>
+    </select><br>
+  </form>
+</article>
+
+Name - text
+Hiiden - checkbox
+Decsription - textarea
+Data maintainer - text
+End data
+Providers - searchable multi select
+Stages - searchable multi select
+Categories - searchable multi select
+Service Users - searchable multi select
+Issues - searchable multi select
