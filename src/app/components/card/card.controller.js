@@ -38,6 +38,40 @@
       });
     }
 
+    function getStages() {
+      return data.stages().get().$promise.then(function(response) {
+        $scope.stages = response._embedded.stages;
+      });
+    }
+
+    function getCategories() {
+      return data.categories().get().$promise.then(function(response) {
+        $scope.categories = response._embedded.categories;
+      });
+    }
+
+    function getServiceUsers() {
+      return data.serviceUsers().get().$promise.then(function(response) {
+        $scope.serviceUsers = response._embedded.serviceUsers;
+      });
+    }
+
+    function getIssues() {
+      return data.issues().get().$promise.then(function(response) {
+        $scope.issues = response._embedded.issues;
+      });
+    }
+
+    function getSelectOptions() {
+      return Promise.all([
+        getProviders(),
+        getStages(),
+        getCategories(),
+        getServiceUsers(),
+        getIssues()
+      ]);
+    }
+
     function openDialog() {
       ngDialog.open({
         template: 'app/components/detail-overlay/detail.html',
@@ -46,7 +80,7 @@
     }
 
     function editService() {
-      getProviders().then(function() {
+      getSelectOptions().then(function() {
         ngDialog.close();
         ngDialog.open({
           template: 'app/components/detail-overlay/edit.html',
