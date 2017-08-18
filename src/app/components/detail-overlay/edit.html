@@ -8,27 +8,27 @@
 
     <label for="providers">Providers: </label><br>
     <select style="width: 200px;" name="providers" id="providers" ng-model="service._embedded.providers" multiple>
-      <option ng-repeat="provider in providers" value="{{provider.id}}">{{provider.name}}</option>
+      <option ng-repeat="provider in card.providers" value="{{provider.id}}">{{provider.name}}</option>
     </select><br>
 
     <label for="stages">Stages: </label><br>
     <select style="width: 200px;" name="stages" id="stages" ng-model="service._embedded.stages" multiple>
-      <option ng-repeat="stage in stages" value="{{stage.id}}">{{stage.name}}</option>
+      <option ng-repeat="stage in card.stages" value="{{stage.id}}">{{stage.name}}</option>
     </select><br>
 
     <label for="categories">Categories: </label><br>
     <select style="width: 200px;" name="categories" id="categories" ng-model="service._embedded.categories" multiple>
-      <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+      <option ng-repeat="category in card.categories" value="{{category.id}}">{{category.name}}</option>
     </select><br>
 
     <label for="service-users">Service users: </label><br>
     <select style="width: 200px;" name="service-users" id="service-users" ng-model="service._embedded.serviceUsers" multiple>
-      <option ng-repeat="serviceUser in serviceUsers" value="{{serviceUser.id}}">{{serviceUser.name}}</option>
+      <option ng-repeat="serviceUser in card.serviceUsers" value="{{serviceUser.id}}">{{serviceUser.name}}</option>
     </select><br>
 
     <label for="issues">Issues: </label><br>
     <select style="width: 200px;" name="issues" id="issues" ng-model="service._embedded.issues" multiple>
-      <option ng-repeat="issue in issues" value="{{issue.id}}">{{issue.name}}</option>
+      <option ng-repeat="issue in card.issues" value="{{issue.id}}">{{issue.name}}</option>
     </select><br>
   </form>
 </article>

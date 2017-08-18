@@ -7,6 +7,7 @@
 
 	function data($q, $resource, config) {
 		var categoriesResource = $resource(config.apiUrl + 'categories');
+		var issuesResource = $resource(config.apiUrl + 'issues');
 		var providersResource = $resource(config.apiUrl + 'providers');
 		var servicesResource = $resource(config.apiUrl + 'services');
 		var serviceUsersResource = $resource(config.apiUrl + 'service-users');
@@ -14,11 +15,13 @@
 
 		var dataStore = {
 			getCategories: getCategories,
+			getIssues: getIssues,
 			getProviders: getProviders,
 			getServices: getServices,
 			getServiceUsers: getServiceUsers,
 			getStages: getStages,
 			categories: [],
+			issues: [],
 			providers: [],
 			services: [],
 			serviceUsers: [],
@@ -96,6 +99,21 @@
 
 			return stagesResource.get().$promise.then(function (response) {
 				dataStore.stages = angular.copy(response._embedded.stages);
+				deferred.resolve();
+				return deferred.promise;
+			});
+		}
+
+		function getIssues () {
+			var deferred = $q.defer();
+
+			if (this.issues.length) {
+				deferred.resolve();
+				return deferred.promise;
+			}
+
+			return issuesResource.get().$promise.then(function (response) {
+				dataStore.issues = angular.copy(response._embedded.issues);
 				deferred.resolve();
 				return deferred.promise;
 			});

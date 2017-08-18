@@ -42,6 +42,7 @@
       getStages();
       getCategories();
       getServiceUsers();
+      getIssues();
     }
 
     function filterFromRouteParams (type, item) {
@@ -118,6 +119,10 @@
         vm.serviceUsers = angular.copy(data.serviceUsers);
         updateDisplay('serviceUsers');
       });
+    }
+
+    function getIssues() {
+      data.getIssues();
     }
 
     // shows which are filtered in dropdown
