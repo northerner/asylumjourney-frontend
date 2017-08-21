@@ -10,6 +10,7 @@
     vm.service = $scope.service;
     vm.openDialog = openDialog;
     vm.editService = editService;
+    vm.save = save;
     vm.providers = data.providers;
     vm.stages = data.stages;
     vm.categories = data.categories;
@@ -52,6 +53,15 @@
           scope: $scope
         });
       // });
+    }
+
+    function save() {
+      ngDialog.close();
+      console.log('saving');
+
+      data.updateService(vm.service).then(function () {
+        console.log('saved');
+      })
     }
   }
 

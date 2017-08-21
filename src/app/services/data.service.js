@@ -9,9 +9,13 @@
 		var categoriesResource = $resource(config.apiUrl + 'categories');
 		var issuesResource = $resource(config.apiUrl + 'issues');
 		var providersResource = $resource(config.apiUrl + 'providers');
-		var servicesResource = $resource(config.apiUrl + 'services');
+    var servicesResource = $resource(config.apiUrl + 'services/:id', {id: '@id'},
+        {
+          'update': { method:'PUT' }
+        });
 		var serviceUsersResource = $resource(config.apiUrl + 'service-users');
 		var stagesResource = $resource(config.apiUrl + 'stages');
+
 
 		var dataStore = {
 			getCategories: getCategories,
@@ -73,6 +77,10 @@
 				return deferred.promise;
 			});
 		}
+
+    function updateService (service) {
+      servicesResource.update(service)
+    }
 
 		function getServiceUsers () {
 			var deferred = $q.defer();

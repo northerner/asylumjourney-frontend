@@ -1,5 +1,5 @@
 <article class="details">
-  <form class="form">
+  <form class="form" ng-submit="save()">
     <label>Name: <input type="text" ng-model="service.name" /></label><br />
     <label>Hidden: <input type="checkbox" ng-model="service.hidden" /></label><br />
     <textarea ng-model="service.description"></textarea><br />
@@ -30,5 +30,6 @@
     <select style="width: 200px;" name="issues" id="issues" ng-model="service._embedded.issues" multiple>
       <option ng-repeat="issue in card.issues" value="{{issue.id}}">{{issue.name}}</option>
     </select><br>
+    <button type="submit">Submit</button>
   </form>
 </article>
